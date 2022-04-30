@@ -1,6 +1,6 @@
 <?php
 session_start();
-$_SESSION['autenticado'] = 'reprovado';
 session_destroy();
+$_SESSION['autenticado'] = 'reprovado';
 
 header('location: /painel/content/login.php ');

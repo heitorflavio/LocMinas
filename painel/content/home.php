@@ -2,10 +2,10 @@
 session_start();
 
 
-if($_SESSION['autenticado']!='Aprovado' || $_SESSION['autenticado']=='Reprovado'){
+if($_SESSION['autenticado']=='Aprovado'){
    
-    header('location: /painel/content/login/login.php ');
-}
+
+
 
 ?>
 
@@ -75,7 +75,8 @@ if($_SESSION['autenticado']!='Aprovado' || $_SESSION['autenticado']=='Reprovado'
         <!-- Brand Logo -->
         <a href="home.php" class="brand-link">
         <img src="dist/img/AdminLTELogo.png" alt="LocMinas Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-        <span class="brand-text font-weight-light">LocMinas</span>
+        <span class="brand-text font-weight-light">LocMinas</span> <br> <br>
+        <span class="brand-text font-weight-light" style="margin: 0px 0px 0px 10px">Bem-vindo,<?php echo ' '.$_SESSION['user'].' !'; ?></span>
         </a>
 
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
@@ -97,7 +98,7 @@ if($_SESSION['autenticado']!='Aprovado' || $_SESSION['autenticado']=='Reprovado'
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link" onclick="usuarios('usuarios/usuarios.php');" >
+                <a href="#" class="nav-link" onclick="usuarios('usuarios/criar_usuarios.php');" >
                   <i class="far fa-circle nav-icon"></i>
                   <p>Usuários</p>
                 </a>
@@ -176,7 +177,12 @@ if($_SESSION['autenticado']!='Aprovado' || $_SESSION['autenticado']=='Reprovado'
             </ul>
               
               
-           
+            <li class="nav-item">
+                <a href="#" class="nav-link" onclick="usuarios('usuarios/usuarios.php');" >
+                  <i class=""></i>
+                  <p>Usuários</p>
+                </a>
+              </li>
 
               <li class="nav-item">
                 <a href="login/login.php" class="nav-link">
@@ -312,3 +318,6 @@ if($_SESSION['autenticado']!='Aprovado' || $_SESSION['autenticado']=='Reprovado'
 </html>
 
 
+<?php }else{
+    header('location: /painel/content/login/login.php ');
+} ?>

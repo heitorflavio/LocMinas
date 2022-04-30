@@ -28,5 +28,6 @@ if ($email != $result['email'] || $pass != $pass_crypt) {
     
 } if($email == $result['email'] && $pass == $pass_crypt){
     $_SESSION['autenticado'] = 'Aprovado';
+    $_SESSION['user'] = $result['nome'];
     header('location: /painel/content/home.php ');
 }

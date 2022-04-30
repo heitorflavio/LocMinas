@@ -26,11 +26,11 @@ if ($_SESSION['autenticado'] != 'Aprovado' || $_SESSION['autenticado'] == 'Repro
         <section class="content">
             <div class="row">
                 <div class="col-xs-12" style="margin-top: 10px; margin: 50px;">
-                    <form action="" method="post">
-                        <input type="submit" value="Cadastrar" class="btn btn-success" style="margin: 0px 0px 0px 10px;">
-                    </form>
-                    <br>
 
+                    <a href="#" onclick="criar_usuarios('criar_usuarios.php');" class="btn btn-success" style="margin: 0px 0px 0px 10px;">Cadastrar </a>
+
+                    <br>
+                    <br>
 
                     <div class="nav-tabs-custom">
 
@@ -105,13 +105,37 @@ if ($_SESSION['autenticado'] != 'Aprovado' || $_SESSION['autenticado'] == 'Repro
 
                     </div>
 
-                </div>
+                    <script>
+                        function criar_usuarios(url) {
+                            if (!document.getElementById('loading')) {
+                                let imgLoading = document.createElement('img');
+                                imgLoading.id = 'loading';
+                                imgLoading.src = 'img/loading.gif';
+                                imgLoading.className = 'rounded mx-auto d-block';
 
+                                document.getElementById('content').appendChild(imgLoading);
+                            }
+                            let ajax = new XMLHttpRequest();
+                            ajax.open('POST', url);
+
+                            ajax.send();
+                            // console.log(ajax);
+                            ajax.onreadystatechange = () => {
+                                if (ajax.readyState == 4 && ajax.status == 200) {
+
+                                    document.getElementById('loading').remove();
+                                    document.getElementById('content').innerHTML = ajax.responseText;
+                                }
+                            }
+                        }
+                    </script>
+                </div>
 
             </div>
     </div>
     </section>
 
 </div>
+
 
 </div>
