@@ -40,7 +40,7 @@ if ($_SESSION['autenticado'] != 'Aprovado' || $_SESSION['autenticado'] == 'Repro
                         <div class="tab-pane-active" id="tab_2">
 
                             <?php
-                            $query = "SELECT * FROM usuarios ORDER BY id DESC ";
+                            $query = "SELECT * FROM ordens ORDER BY id DESC ";
                             $pedidos = $sqli->query($query);
 
 

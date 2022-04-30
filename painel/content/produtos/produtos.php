@@ -26,9 +26,9 @@ if ($_SESSION['autenticado'] != 'Aprovado' || $_SESSION['autenticado'] == 'Repro
         <section class="content">
             <div class="row">
                 <div class="col-xs-12" style="margin-top: 10px; margin: 50px;">
-                    <form action="" method="post">
+                    <!-- <form action="" method="post">
                         <input type="submit" value="Cadastrar" class="btn btn-success" style="margin: 0px 0px 0px 10px;">
-                    </form>
+                    </form> -->
                     <br>
 
 
