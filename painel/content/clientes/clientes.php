@@ -16,19 +16,11 @@ if ($_SESSION['autenticado'] != 'Aprovado' || $_SESSION['autenticado'] == 'Repro
 
 
 
-<div class="wrapper">
-
-
-    <div class="content-wrapper">
-
-
 
         <section class="content">
             <div class="row">
                 <div class="col-xs-12" style="margin-top: 10px; margin: 50px;">
-                    <form action="" method="post">
-                        <input type="submit" value="Cadastrar" class="btn btn-success" style="margin: 0px 0px 0px 10px;">
-                    </form>
+                        <input type="submit" value="Cadastrar" class="btn btn-success" style="margin-bottom: 10px;" onclick="content('clientes/cadastrar.php')">
                     <br>
 
 
@@ -66,10 +58,6 @@ if ($_SESSION['autenticado'] != 'Aprovado' || $_SESSION['autenticado'] == 'Repro
 
 
 
-
-
-
-
                                     ?>
 
                                         <tr>
@@ -79,8 +67,8 @@ if ($_SESSION['autenticado'] != 'Aprovado' || $_SESSION['autenticado'] == 'Repro
                                             <td><?php echo $value['telefone'],'<br>',$value['celular']; ?></td>
                                             <td><?php echo $value['rua'],'  N⁰ '.$value['numero'],'<br>','Bairro: '.$value['bairro']; ?></td>
                                             <td><?php  if(!empty($value['cpf'])){ echo $value['cpf'];} if(!empty($value['cnpj'])){ echo $value['cnpj'];} if(empty($value['cpf']) && empty($value['cnpj'])){echo 'Não Cadastrado';}?></td>
-                                            <td> <input type="submit" value="Editar" class="btn btn-success"></td>
-
+                                            <td> <input type="submit" value="Editar" class="btn btn-success" onclick="content('clientes/editar.php')"></td>
+                                               
 
 
                                         </tr>
@@ -115,7 +103,3 @@ if ($_SESSION['autenticado'] != 'Aprovado' || $_SESSION['autenticado'] == 'Repro
             </div>
     </div>
     </section>
-
-</div>
-
-</div>

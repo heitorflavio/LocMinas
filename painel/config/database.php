@@ -5,7 +5,7 @@ class Banco {
 
     function conexao() { 
         $servername = "localhost";
-        $database = "LocMinas";
+        $database = "locminas";
         $username = "root";
         $password = "root";
         // Create connection

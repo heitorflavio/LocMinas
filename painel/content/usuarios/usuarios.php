@@ -16,126 +16,129 @@ if ($_SESSION['autenticado'] != 'Aprovado' || $_SESSION['autenticado'] == 'Repro
 
 
 
-<div class="wrapper">
-
-
-    <div class="content-wrapper">
-
-
-
-        <section class="content">
-            <div class="row">
-                <div class="col-xs-12" style="margin-top: 10px; margin: 50px;">
-
-                    <!-- <a href="#" onclick="criar_usuarios('criar_usuarios.php');" class="btn btn-success" style="margin: 0px 0px 0px 10px;">Cadastrar </a>
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12" style="margin-top: 10px; margin: 50px;">
+            <div style="margin-bottom: 10px;">
+                <input type="button" value="Cadastrar" onclick="content('usuarios/cadastrar.php');" class="btn btn-success">
+            </div>
+            <!-- <a href="#" onclick="criar_usuarios('criar_usuarios.php');" class="btn btn-success" style="margin: 0px 0px 0px 10px;">Cadastrar </a>
 
                     <br>
                     <br> -->
 
-                    <div class="nav-tabs-custom">
+            <div class="nav-tabs-custom">
 
-                        <div style="clear: both;"></div>
+                <div style="clear: both;"></div>
 
 
-                        <div class="tab-pane-active" id="tab_2">
+                <div class="tab-pane-active" id="tab_2">
+
+                    <?php
+                   $user = $_SESSION['user'];
+                    $query = "SELECT * FROM usuarios WHERE nome='$user'";
+                    $pedidos = $sqli->query($query)->fetch_array();
+                //    foreach ($pedidos as $key => $value) {
+                //     print_r($value);
+                //    }
+                // print_r($pedidos);
+                   
+                    if($pedidos['adm']==1){
+                        $query = "SELECT * FROM usuarios ORDER BY id DESC ";
+                        $pedidos = $sqli->query($query);
+                    }else{
+                        $query = "SELECT * FROM usuarios  WHERE nome='$user' ORDER BY id DESC ";
+                        $pedidos = $sqli->query($query);
+                    }
+
+                    ?>
+
+                    <table id="example1" class="table table-bordered table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th style="width: 40px" class="no-sort">Cod.</th>
+                                <th style="width: 130px" class="no-sort">Nome</th>
+                                <th class="no-sort">Email</th>
+                                <th style="width: 130px" class="no-sort">Telefone</th>
+
+
+                            </tr>
+                        </thead>
+                        <tbody>
 
                             <?php
-                            $query = "SELECT * FROM usuarios ORDER BY id DESC ";
-                            $pedidos = $sqli->query($query);
+                            foreach ($pedidos  as $key => $value) {
+
+
+
+
+
 
 
                             ?>
 
-                            <table id="example1" class="table table-bordered table-striped table-hover">
-                                <thead>
-                                    <tr>
-                                        <th style="width: 30px" class="no-sort">Cod.</th>
-                                        <th style="width: 130px" class="no-sort">Nome</th>
-                                        <th class="no-sort">Email</th>
-                                        <th style="width: 130px" class="no-sort">Telefone</th>
-                                        <th style="width: 100px" class="no-sort">Editar</th>
-
-                                    </tr>
-                                </thead>
-                                <tbody>
-
-                                    <?php
-                                    foreach ($pedidos  as $key => $value) {
-
-
-
-
-
-
-
-                                    ?>
-
-                                        <tr>
-                                            <td> <?php echo $value['id']; ?> </td>
-                                            <td> <?php echo $value['nome'] ?> </td>
-                                            <td> <?php echo $value['email']; ?> </td>
-                                            <td><?php echo $value['telefone']; ?></td>
-                                            <td> <input type="submit" value="Editar" class="btn btn-success"></td>
-
-
-
-                                        </tr>
-                                    <?php } ?>
-
-                                </tbody>
-                            </table>
+                                <tr>
+                                    <td>
+                                        <?php
+                                        if (!empty($value['id'])) {
+                                            $valor = $value['id'];
+                                            $url="'usuarios/editar.php'";
+                                            $a==0;
+                                            $a++;
+                                            
+                                           
+                                            // echo '<inpu;t type="hidden" name="">'
+                                            echo '<input type="submit" value="' . $valor . '" class="btn btn-success" style="width: 40px" name="user" onclick="content('.$url.')"> ';
+                                            $_SESSION['editar'] =  $valor;
+                                        //     if ($user==true) {
+                                        //          $_SESSION['editar'] = $valor;
+                                           
+                                        //     // print_r($_SESSION);
+                                        //     }
+                                        }
 
 
 
 
+                                        ?> 
+                                   
+                                    </td>
+                                    <td> <?php echo $value['nome'] ?> </td>
+                                    <td> <?php echo $value['email']; ?> </td>
+                                    <td><?php echo $value['telefone']; ?></td>
 
-                        </div>
 
 
 
+                                </tr>
+                            <?php } ?>
 
                         </tbody>
-                        </table>
+                    </table>
 
 
 
-                        </form>
 
 
-
-                    </div>
-
-                    <script>
-                        function criar_usuarios(url) {
-                            if (!document.getElementById('loading')) {
-                                let imgLoading = document.createElement('img');
-                                imgLoading.id = 'loading';
-                                imgLoading.src = 'img/loading.gif';
-                                imgLoading.className = 'rounded mx-auto d-block';
-
-                                document.getElementById('content').appendChild(imgLoading);
-                            }
-                            let ajax = new XMLHttpRequest();
-                            ajax.open('POST', url);
-
-                            ajax.send();
-                            // console.log(ajax);
-                            ajax.onreadystatechange = () => {
-                                if (ajax.readyState == 4 && ajax.status == 200) {
-
-                                    document.getElementById('loading').remove();
-                                    document.getElementById('content').innerHTML = ajax.responseText;
-                                }
-                            }
-                        }
-                    </script>
                 </div>
 
+
+
+
+                </tbody>
+                </table>
+
+
+
+                </form>
+
+
+
             </div>
+
+
+        </div>
+
     </div>
-    </section>
-
-</div>
-
-
-</div>
+    </div>
+</section>

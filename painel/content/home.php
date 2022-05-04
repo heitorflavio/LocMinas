@@ -43,11 +43,19 @@ if ($_SESSION['autenticado'] == 'Aprovado') {
         width: 400px;
         height: 400px;
       }
+      #content{
+        
+        justify-content: center;
+        display: flex;
+        flex-wrap: wrap;
+        align-content: center;
+        background-color: #fff;
+      }
     </style>
   </head>
 
   <body class="hold-transition sidebar-mini layout-fixed">
-    <div class="wrapper">
+    <div class="wrapper" style="background-color: #fff;">
 
       <!-- Preloader -->
       <div class="preloader flex-column justify-content-center align-items-center">
@@ -95,9 +103,9 @@ if ($_SESSION['autenticado'] == 'Aprovado') {
                with font-awesome or any other icon font library -->
               <li class="nav-item">
                 <a href="#" class="nav-link">
-                  <i class="nav-icon fas fa-edit"></i>
+                  <i class="nav-icon fas fa-tree"></i>
                   <p>
-                    Cadastro
+                    Clientes
                     <i class="right fas fa-angle-left"></i>
                   </p>
                 </a>
@@ -105,19 +113,19 @@ if ($_SESSION['autenticado'] == 'Aprovado') {
                   <li class="nav-item">
                     <a href="#" class="nav-link " onclick="content('clientes/clientes.php');">
                       <i class="far fa-circle nav-icon"></i>
-                      <p>Clientes</p>
+                      <p>Cadastrar</p>
                     </a>
                   </li>
                   <li class="nav-item">
                     <a href="#" class="nav-link" onclick="content('usuarios/criar_usuarios.php');">
                       <i class="far fa-circle nav-icon"></i>
-                      <p>Usuários</p>
+                      <p>Buscar Clientes</p>
                     </a>
                   </li>
                   <li class="nav-item">
                     <a href="#" class="nav-link" onclick="content('produtos/produtos.php')">
                       <i class="far fa-circle nav-icon"></i>
-                      <p>Produtos</p>
+                      <p>Historico de Cliente</p>
                     </a>
                   </li>
 
@@ -148,9 +156,9 @@ if ($_SESSION['autenticado'] == 'Aprovado') {
 
               <li class="nav-item ">
                 <a href="#" class="nav-link">
-                  <i class=""></i>
+                  <i class="nav-icon fas fa-edit"></i>
                   <p>
-                    Clientes
+                    Produtos
                     <i class="right fas fa-angle-left"></i>
                   </p>
                 </a>
@@ -158,7 +166,7 @@ if ($_SESSION['autenticado'] == 'Aprovado') {
                   <li class="nav-item">
                     <a href="#" class="nav-link " onclick="content('clientes/clientes.php');">
                       <i class="far fa-circle nav-icon"></i>
-                      <p>Buscar Clientes</p>
+                      <p>Cadastro</p>
                     </a>
                   </li>
               </li>
@@ -166,7 +174,7 @@ if ($_SESSION['autenticado'] == 'Aprovado') {
 
             <li class="nav-item ">
               <a href="#" class="nav-link">
-                <i class=""></i>
+                <i class="nav-icon fas fa-chart-pie"></i>
                 <p>
                   Caixa
                   <i class="right fas fa-angle-left"></i>
@@ -189,7 +197,7 @@ if ($_SESSION['autenticado'] == 'Aprovado') {
 
             <li class="nav-item">
               <a href="#" class="nav-link" onclick="content('usuarios/usuarios.php');">
-                <i class=""></i>
+                <i class="nav-icon far fa-plus-square"></i>
                 <p>Usuários</p>
               </a>
             </li>
@@ -207,12 +215,12 @@ if ($_SESSION['autenticado'] == 'Aprovado') {
       </aside>
 
     </div>
-    <div id="content">
+    
+    <div id="content" class="nav-content" >
 
 
 
     </div>
-
     <!-- Control Sidebar -->
     <aside class="control-sidebar control-sidebar-dark">
       <!-- Control sidebar content goes here -->
